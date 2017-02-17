@@ -46,6 +46,9 @@ public class SplashActivity extends Activity {
         }, SPLASH_TIME_OUT);
     }
 
+    /**
+     * This method is used to initialized view.
+     */
     private void initializeView() {
         pgBar = (ProgressBar) findViewById(R.id.pgBar);
         pgBar.setVisibility(View.VISIBLE);
