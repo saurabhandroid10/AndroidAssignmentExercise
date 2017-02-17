@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AndroidAssignmentExercise</string>
+    <string name="welcome_msg">Welcome to App</string>
+</resources>
