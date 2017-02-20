@@ -81,6 +81,15 @@ public class MainActivity extends AppCompatActivity {
                     actionBar.setTitle(countryResponse.getTitle());
                     List<Row> rowData = countryResponse.getRows();
 
+                    /***
+                     * Skip null row from the response
+                     */
+                    for (int i=0; i<rowData.size();i++){
+                        if(rowData.get(i).getTitle() == null && rowData.get(i).getDescription() == null && rowData.get(i).getImageHref() == null){
+                            rowData.remove(rowData.get(i));
+                        }
+                    }
+
                     recyclerView.setAdapter(new CustomAdapter(rowData, MainActivity.this));
                 } else {
                     Toast.makeText(MainActivity.this, getResources().getString(R.string.server_error), Toast.LENGTH_SHORT).show();

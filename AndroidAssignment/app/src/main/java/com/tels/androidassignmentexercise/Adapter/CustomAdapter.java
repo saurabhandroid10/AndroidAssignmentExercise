@@ -5,6 +5,7 @@ package com.tels.androidassignmentexercise.Adapter;
  */
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.tels.androidassignmentexercise.Model.Row;
 import com.tels.androidassignmentexercise.R;
 
@@ -41,6 +43,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
         holder.tvTitle.setText(mRowData.get(position).getTitle());
         holder.tvDescription.setText(mRowData.get(position).getDescription());
+
+        if (mRowData.get(position).getImageHref() != null) {
+            Uri uri = Uri.parse(mRowData.get(position).getImageHref().toString());
+            Picasso.with(mContext).load(uri).resize(300, 200).centerCrop().error(R.drawable.place_holder_err).into(holder.ivThumbnail);
+        }
+        else {
+            holder.ivThumbnail.setImageDrawable(null);
+        }
     }
 
     @Override
