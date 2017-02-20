@@ -39,8 +39,6 @@ public class NetworkServiceController {
 
     private Retrofit buildDefaultRestAdapter(String baseUrl) {
 
-        System.out.println(">>>>BASE URL " + baseUrl);
-
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(okHttpClient)

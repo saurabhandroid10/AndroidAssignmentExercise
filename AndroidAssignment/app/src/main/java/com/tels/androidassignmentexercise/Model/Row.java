@@ -10,13 +10,13 @@ public class Row {
 
     @SerializedName("title")
     @Expose
-    private String title;
+    private String title = "";
     @SerializedName("description")
     @Expose
-    private String description;
+    private String description = "";
     @SerializedName("imageHref")
     @Expose
-    private Object imageHref;
+    private Object imageHref = null;
 
     public String getTitle() {
         return title;

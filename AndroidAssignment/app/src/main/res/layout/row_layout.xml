@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:paddingLeft="15dp"
     android:paddingRight="15dp"
-    android:paddingTop="5dp">
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
 
     <TextView
         android:id="@+id/tvTitle"
@@ -35,12 +36,5 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true" />
     </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/divider_height"
-        android:layout_below="@+id/rlInner"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/darker_gray" />
 
 </RelativeLayout>
