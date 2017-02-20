@@ -2,6 +2,7 @@ package com.tels.androidassignmentexercise.Activity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -24,12 +25,13 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     private ActionBar actionBar;
     private RecyclerView recyclerView;
     private NetworkService mNetworkService;
     private ProgressDialog pbDialog;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
 
     @Override
@@ -62,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
     }
 
     /**
@@ -91,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     recyclerView.setAdapter(new CustomAdapter(rowData, MainActivity.this));
+                    mSwipeRefreshLayout.setRefreshing(false);
                 } else {
                     Toast.makeText(MainActivity.this, getResources().getString(R.string.server_error), Toast.LENGTH_SHORT).show();
                 }
@@ -121,5 +126,10 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        getServerResponse();
     }
 }
