@@ -46,7 +46,7 @@ public class SplashActivityTest {
 
     // ProgressBar visibility
     @Test
-    public void testButtonsVisible() {
+    public void ProgressBarVisible() {
         assertThat(pbBar.getVisibility(), equalTo(View.VISIBLE));
     }
 
