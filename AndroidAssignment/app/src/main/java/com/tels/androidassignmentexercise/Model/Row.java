@@ -11,9 +11,11 @@ public class Row {
     @SerializedName("title")
     @Expose
     private String title = "";
+
     @SerializedName("description")
     @Expose
     private String description = "";
+
     @SerializedName("imageHref")
     @Expose
     private Object imageHref = null;

@@ -13,6 +13,7 @@ public class CountryResponse {
     @SerializedName("title")
     @Expose
     private String title = "";
+
     @SerializedName("rows")
     @Expose
     private List<Row> rows = null;
